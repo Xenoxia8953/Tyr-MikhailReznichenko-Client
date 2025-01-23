@@ -6,6 +6,9 @@
 	<Version>1.0.0</Version>
     <Authors>Tyrian</Authors>
   </PropertyGroup>
+  <PropertyGroup>
+   <LangVersion>13.0</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="LeaveItThere">
       <HintPath>..\..\BepInEx\plugins\LeaveItThere\LeaveItThere.dll</HintPath>

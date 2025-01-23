@@ -16,54 +16,25 @@ namespace Tyr_MikhailReznichenko_Client
     public class LayerSetter : BaseUnityPlugin
     {
         public static ManualLogSource LogSource;
-        public static ServerConfig ServerConfig = new ServerConfig();
+        public static List<string> GetItemIds;
         public const string configToClient = "/tyrian/mikhailreznichenko/config_to_client";
 
         public void Awake()
         {
             LogSource = BepInEx.Logging.Logger.CreateLogSource(" Mikhail Reznichenko ");
-            LogSource.LogWarning("Logger initialized!");
+            LogSource.LogWarning("Jehree is smelly :3");
         }
 
         public void Start()
         {
             LogSource.LogWarning("Attempting to Initialise server route.");
-            try
-            {
-                ServerConfig = ServerRouteHelper.ServerRoute<ServerConfig>(configToClient, ServerConfig);
-                LogSource.LogWarning($"serverConfig is of type: {ServerConfig.GetType()}");
-                LogSource.LogWarning("Fetched server configuration.");
-
-                if (ServerConfig.itemIds == null)
-                {
-                    LogSource.LogWarning("ServerConfig.ItemIds is null.");
-                    return;
-                }else
-                {
-                    LogSource.LogWarning($"serverConfig.ItemIds is of type: {ServerConfig.itemIds.GetType()}");
-                    LogSource.LogWarning($"Item IDs: {string.Join(", ", ServerConfig.itemIds)}");
-                }
-
-                if (ServerConfig.itemIds.Count == 0)
-                {
-                    LogSource.LogWarning("ServerConfig.ItemIds is empty.");
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                LogSource.LogWarning($"Error attempting server route.");
-                LogSource.LogWarning($"Error during Start: {ex.Message}\n{ex.StackTrace}");
-            }
-            LogSource.LogWarning("Attempting to Initialise subscription to fake item event.");
+            GetItemIds = ServerRouteHelper.ServerRoute<List<string>>(configToClient);
             LeaveItThereStaticEvents.OnFakeItemInitialized += OnFakeItemInitialized;
         }
 
         public void OnFakeItemInitialized(FakeItem fakeItem)
         {
-            LogSource.LogWarning("Running fake item event.");
-            if (ServerConfig.itemIds.Contains(fakeItem.LootItem.Item.TemplateId) == false) return;
-            LogSource.LogWarning("Found one of your funky items!");
+            if (GetItemIds.Contains(fakeItem.LootItem.Item.TemplateId) == false) return;
             fakeItem.AddonFlags.IsPhysicalRegardlessOfSize = true;
 
             foreach (Transform child in fakeItem.transform)
@@ -73,22 +44,15 @@ namespace Tyr_MikhailReznichenko_Client
 
                 if (colliderTransform != null)
                 {
-                    LogSource.LogWarning("collider found!");
                     colliderTransform.gameObject.layer = 18;
                 }
 
                 if (ballisticTransform != null)
                 {
-                    LogSource.LogWarning("ballistic found!");
                     ballisticTransform.gameObject.layer = 12;
                 }
             }
         }
-    }
-
-    public class ServerConfig
-    {
-        public List<string> itemIds;
     }
 
     public class ServerRouteHelper
