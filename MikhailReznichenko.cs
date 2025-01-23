@@ -6,7 +6,6 @@ using LeaveItThere.Components;
 using Newtonsoft.Json;
 using UnityEngine;
 using SPT.Common.Http;
-using static Val;
 using System;
 
 namespace Tyr_MikhailReznichenko_Client
@@ -17,7 +16,7 @@ namespace Tyr_MikhailReznichenko_Client
     public class LayerSetter : BaseUnityPlugin
     {
         public static ManualLogSource LogSource;
-        public static ServerConfig serverConfig;
+        public static ServerConfig ServerConfig = new ServerConfig();
         public const string configToClient = "/tyrian/mikhailreznichenko/config_to_client";
 
         public void Awake()
@@ -31,26 +30,25 @@ namespace Tyr_MikhailReznichenko_Client
             LogSource.LogWarning("Attempting to Initialise server route.");
             try
             {
-                serverConfig = ServerRouteHelper.ServerRoute<ServerConfig>(configToClient);
-                LogSource.LogWarning($"serverConfig is of type: {serverConfig.GetType()}");
+                ServerConfig = ServerRouteHelper.ServerRoute<ServerConfig>(configToClient, ServerConfig);
+                LogSource.LogWarning($"serverConfig is of type: {ServerConfig.GetType()}");
                 LogSource.LogWarning("Fetched server configuration.");
 
-                // Check if ItemIds is null or empty
-                if (serverConfig.ItemIds == null)
+                if (ServerConfig.itemIds == null)
                 {
-                    LogSource.LogWarning($"serverConfig is of type: {serverConfig.ItemIds.GetType()}");
                     LogSource.LogWarning("ServerConfig.ItemIds is null.");
                     return;
+                }else
+                {
+                    LogSource.LogWarning($"serverConfig.ItemIds is of type: {ServerConfig.itemIds.GetType()}");
+                    LogSource.LogWarning($"Item IDs: {string.Join(", ", ServerConfig.itemIds)}");
                 }
 
-                if (serverConfig.ItemIds.Count == 0)
+                if (ServerConfig.itemIds.Count == 0)
                 {
                     LogSource.LogWarning("ServerConfig.ItemIds is empty.");
                     return;
                 }
-
-                // Log the item IDs
-                LogSource.LogWarning($"Item IDs: {string.Join(", ", serverConfig.ItemIds)}");
             }
             catch (Exception ex)
             {
@@ -64,7 +62,7 @@ namespace Tyr_MikhailReznichenko_Client
         public void OnFakeItemInitialized(FakeItem fakeItem)
         {
             LogSource.LogWarning("Running fake item event.");
-            if (serverConfig.ItemIds.Contains(fakeItem.LootItem.Item.TemplateId) == false) return;
+            if (ServerConfig.itemIds.Contains(fakeItem.LootItem.Item.TemplateId) == false) return;
             LogSource.LogWarning("Found one of your funky items!");
             fakeItem.AddonFlags.IsPhysicalRegardlessOfSize = true;
 
@@ -86,11 +84,11 @@ namespace Tyr_MikhailReznichenko_Client
                 }
             }
         }
+    }
 
-        public struct ServerConfig
-        {
-            public List<string> ItemIds;
-        }
+    public class ServerConfig
+    {
+        public List<string> itemIds;
     }
 
     public class ServerRouteHelper
