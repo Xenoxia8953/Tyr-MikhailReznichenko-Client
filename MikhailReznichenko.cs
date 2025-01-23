@@ -18,25 +18,27 @@ namespace MikhailReznichenko
     {
         public static ManualLogSource LogSource;
         public static ServerConfig serverConfig;
-        public const string configToClient = "/tyrian/mikhail_reznichenko/config_to_client";
+        public const string configToClient = "/tyrian/mikhailreznichenko/config_to_client";
 
         public void Awake()
         {
             LogSource = BepInEx.Logging.Logger.CreateLogSource(" Mikhail Reznichenko ");
-            LogSource.LogDebug("Logger initialized!");
+            LogSource.LogWarning("Logger initialized!");
         }
 
         public void Start()
         {
-            LogSource.LogDebug("Attempting to Initialise server route.");
+            LogSource.LogWarning("Attempting to Initialise server route.");
             try
             {
                 serverConfig = ServerRouteHelper.ServerRoute<ServerConfig>(configToClient);
-                LogSource.LogInfo("Fetched server configuration.");
+                LogSource.LogWarning($"serverConfig is of type: {serverConfig.GetType()}");
+                LogSource.LogWarning("Fetched server configuration.");
 
                 // Check if ItemIds is null or empty
                 if (serverConfig.ItemIds == null)
                 {
+                    LogSource.LogWarning($"serverConfig is of type: {serverConfig.ItemIds.GetType()}");
                     LogSource.LogWarning("ServerConfig.ItemIds is null.");
                     return;
                 }
@@ -48,22 +50,22 @@ namespace MikhailReznichenko
                 }
 
                 // Log the item IDs
-                LogSource.LogDebug($"Item IDs: {string.Join(", ", serverConfig.ItemIds)}");
+                LogSource.LogWarning($"Item IDs: {string.Join(", ", serverConfig.ItemIds)}");
             }
             catch (Exception ex)
             {
-                LogSource.LogError($"Error attempting server route.");
-                LogSource.LogError($"Error during Start: {ex.Message}\n{ex.StackTrace}");
+                LogSource.LogWarning($"Error attempting server route.");
+                LogSource.LogWarning($"Error during Start: {ex.Message}\n{ex.StackTrace}");
             }
-            LogSource.LogDebug("Attempting to Initialise subscription to fake item event.");
+            LogSource.LogWarning("Attempting to Initialise subscription to fake item event.");
             LeaveItThereStaticEvents.OnFakeItemInitialized += OnFakeItemInitialized;
         }
 
         public void OnFakeItemInitialized(FakeItem fakeItem)
         {
-            LogSource.LogDebug("Running fake item event.");
+            LogSource.LogWarning("Running fake item event.");
             if (serverConfig.ItemIds.Contains(fakeItem.LootItem.Item.TemplateId) == false) return;
-            LogSource.LogDebug("Found one of your funky items!");
+            LogSource.LogWarning("Found one of your funky items!");
             fakeItem.AddonFlags.IsPhysicalRegardlessOfSize = true;
 
             foreach (Transform child in fakeItem.transform)
@@ -73,13 +75,13 @@ namespace MikhailReznichenko
 
                 if (colliderTransform != null)
                 {
-                    LogSource.LogDebug("collider found!");
+                    LogSource.LogWarning("collider found!");
                     colliderTransform.gameObject.layer = 18;
                 }
 
                 if (ballisticTransform != null)
                 {
-                    LogSource.LogDebug("ballistic found!");
+                    LogSource.LogWarning("ballistic found!");
                     ballisticTransform.gameObject.layer = 12;
                 }
             }
