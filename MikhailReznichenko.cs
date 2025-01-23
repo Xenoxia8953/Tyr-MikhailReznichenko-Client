@@ -9,7 +9,7 @@ using SPT.Common.Http;
 using static Val;
 using System;
 
-namespace MikhailReznichenko
+namespace Tyr_MikhailReznichenko_Client
 {
     [BepInDependency("Jehree.LeaveItThere", BepInDependency.DependencyFlags.HardDependency)]
     [BepInPlugin("Tyrian.MikhailReznichenko", "MikhailReznichenko", "1.0.0")]
@@ -95,14 +95,14 @@ namespace MikhailReznichenko
 
     public class ServerRouteHelper
     {
-        public static T ServerRoute<T>(string url, object data = default(object))
+        public static T ServerRoute<T>(string url, object data = default)
         {
             string json = JsonConvert.SerializeObject(data);
             var req = RequestHandler.PostJson(url, json);
             return JsonConvert.DeserializeObject<T>(req);
         }
 
-        public static string ServerRoute(string url, object data = default(object))
+        public static string ServerRoute(string url, object data = default)
         {
             string json;
             if (data is string)
