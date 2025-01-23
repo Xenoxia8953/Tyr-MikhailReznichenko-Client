@@ -18,7 +18,7 @@ namespace MikhailReznichenko
     {
         public static ManualLogSource LogSource;
         public static ServerConfig serverConfig;
-        public const string ConfigToClient = "/tyrian/mikhail_reznichenko/config_to_client";
+        public const string configToClient = "/tyrian/mikhail_reznichenko/config_to_client";
 
         public void Awake()
         {
@@ -31,7 +31,7 @@ namespace MikhailReznichenko
             LogSource.LogDebug("Attempting to Initialise server route.");
             try
             {
-                serverConfig = ServerRouteHelper.ServerRoute<ServerConfig>(ConfigToClient);
+                serverConfig = ServerRouteHelper.ServerRoute<ServerConfig>(configToClient);
                 LogSource.LogInfo("Fetched server configuration.");
 
                 // Check if ItemIds is null or empty
