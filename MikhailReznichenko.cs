@@ -27,7 +27,6 @@ namespace Tyr_MikhailReznichenko_Client
 
         public void Start()
         {
-            LogSource.LogWarning("Attempting to Initialise server route.");
             GetItemIds = ServerRouteHelper.ServerRoute<List<string>>(configToClient);
             LeaveItThereStaticEvents.OnFakeItemInitialized += OnFakeItemInitialized;
         }
