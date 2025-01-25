@@ -5,6 +5,7 @@ using LeaveItThere.Helpers;
 using LeaveItThere.Components;
 using Newtonsoft.Json;
 using SPT.Common.Http;
+using EFT.UI;
 
 namespace Tyr_MikhailReznichenko_Client
 {
@@ -16,7 +17,7 @@ namespace Tyr_MikhailReznichenko_Client
         public static ManualLogSource LogSource;
         public static List<string> GetItemIds;
         public static List<string> GetExcludedItemIds;
-        public const string configToClient = "/tyrian/mikhailreznichenko/config_to_client";
+        public const string itemidsToClient = "/tyrian/mikhailreznichenko/itemids_to_client";
 
         public void Awake()
         {
@@ -26,7 +27,7 @@ namespace Tyr_MikhailReznichenko_Client
 
         public void Start()
         {
-            GetItemIds = ServerRouteHelper.ServerRoute<List<string>>(configToClient);
+            GetItemIds = RouteHelper.ServerRoute<List<string>>(itemidsToClient);
             LeaveItThereStaticEvents.OnFakeItemInitialized += OnFakeItemInitialized;
         }
         public void OnFakeItemInitialized(FakeItem fakeItem)
@@ -36,31 +37,13 @@ namespace Tyr_MikhailReznichenko_Client
             fakeItem.AddonFlags.RemoveRootCollider = true;
         }
     }
-    public class ServerRouteHelper
+    public class RouteHelper
     {
         public static T ServerRoute<T>(string url, object data = default)
         {
             string json = JsonConvert.SerializeObject(data);
             var req = RequestHandler.PostJson(url, json);
             return JsonConvert.DeserializeObject<T>(req);
-        }
-
-        public static string ServerRoute(string url, object data = default)
-        {
-            string json;
-            if (data is string v)
-            {
-                Dictionary<string, string> dataDict = new()
-                {
-                    { "data", v }
-                };
-                json = JsonConvert.SerializeObject(dataDict);
-            }
-            else
-            {
-                json = JsonConvert.SerializeObject(data);
-            }
-            return RequestHandler.PutJson(url, json);
         }
     }
 }
