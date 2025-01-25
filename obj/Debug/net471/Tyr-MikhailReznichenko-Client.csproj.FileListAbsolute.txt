@@ -132,7 +132,7 @@ D:\Tarkov Fika 3.10.5\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471
 D:\Tarkov Fika 3.10.5\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-MikhailReznichenko-Client.AssemblyInfoInputs.cache
 D:\Tarkov Fika 3.10.5\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-MikhailReznichenko-Client.AssemblyInfo.cs
 D:\Tarkov Fika 3.10.5\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-MikhailReznichenko-Client.csproj.CoreCompileInputs.cache
+D:\Tarkov Fika 3.10.5\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-MikhailReznichenko-Client.sourcelink.json
 D:\Tarkov Fika 3.10.5\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-Mikh.8394BCFA.Up2Date
 D:\Tarkov Fika 3.10.5\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-MikhailReznichenko-Client.dll
 D:\Tarkov Fika 3.10.5\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-MikhailReznichenko-Client.pdb
-D:\Tarkov Fika 3.10.5\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-MikhailReznichenko-Client.sourcelink.json

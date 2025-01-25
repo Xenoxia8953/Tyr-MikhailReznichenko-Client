@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tyrian")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b56be9b71fdf8c5ed5b6c7765aa7e5d25ecae66")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f526d89b1ac4071e3c39a183b82c897cf4540758")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tyr-MikhailReznichenko-Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tyr-MikhailReznichenko-Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

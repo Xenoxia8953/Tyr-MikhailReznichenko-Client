@@ -6,7 +6,6 @@ using LeaveItThere.Components;
 using Newtonsoft.Json;
 using UnityEngine;
 using SPT.Common.Http;
-using System;
 
 namespace Tyr_MikhailReznichenko_Client
 {
@@ -29,31 +28,70 @@ namespace Tyr_MikhailReznichenko_Client
         {
             GetItemIds = ServerRouteHelper.ServerRoute<List<string>>(configToClient);
             LeaveItThereStaticEvents.OnFakeItemInitialized += OnFakeItemInitialized;
+            LeaveItThereStaticEvents.OnItemPlacedStateChanged += OnItemPlacedStateChanged;
         }
-
         public void OnFakeItemInitialized(FakeItem fakeItem)
         {
             if (GetItemIds.Contains(fakeItem.LootItem.Item.TemplateId) == false) return;
-            fakeItem.AddonFlags.IsPhysicalRegardlessOfSize = true;
+            fakeItem.AddonFlags.IsPhysicalRegardlessOfSize = false;
+            fakeItem.gameObject.layer = 22;
 
-            foreach (Transform child in fakeItem.transform)
+            BoxCollider boxCollider = fakeItem.GetComponent<BoxCollider>();
+            if (boxCollider != null)
             {
-                Transform colliderTransform = child.Find("collider");
-                Transform ballisticTransform = child.Find("ballistic");
+                Destroy(boxCollider);
+            }
 
-                if (colliderTransform != null)
+            List<GameObject> children = GetAllChildren(fakeItem.gameObject);
+            ProcessAllChildren(children);
+        }
+        public void OnItemPlacedStateChanged(FakeItem fakeItem, bool isPlaced)
+        {
+            if (GetItemIds.Contains(fakeItem.LootItem.Item.TemplateId) == false) return;
+            fakeItem.AddonFlags.IsPhysicalRegardlessOfSize = false ;
+            fakeItem.gameObject.layer = 22;
+
+            BoxCollider boxCollider = fakeItem.GetComponent<BoxCollider>();
+            if (boxCollider != null)
+            {
+                Destroy(boxCollider);
+            }
+
+            List<GameObject> children = GetAllChildren(fakeItem.gameObject);
+            ProcessAllChildren(children);
+        }
+        public static List<GameObject> GetAllChildren(GameObject parent)
+        {
+            List<GameObject> children = [];
+
+            foreach (Transform child in parent.transform)
+            {
+                children.Add(child.gameObject);
+                children.AddRange(GetAllChildren(child.gameObject));
+            }
+
+            return children;
+        }
+        private void ProcessAllChildren(List<GameObject> children)
+        {
+            foreach (GameObject child in children)
+            {
+                if (child.name.Contains("LOD0"))
                 {
-                    colliderTransform.gameObject.layer = 18;
+                    child.gameObject.layer = 15;
+                }
+                if (child.name.Equals("collider"))
+                {
+                    child.gameObject.layer = 18;
                 }
 
-                if (ballisticTransform != null)
+                if (child.name.Equals("ballistic"))
                 {
-                    ballisticTransform.gameObject.layer = 12;
+                    child.gameObject.layer = 12;
                 }
             }
         }
     }
-
     public class ServerRouteHelper
     {
         public static T ServerRoute<T>(string url, object data = default)
@@ -66,10 +104,12 @@ namespace Tyr_MikhailReznichenko_Client
         public static string ServerRoute(string url, object data = default)
         {
             string json;
-            if (data is string)
+            if (data is string v)
             {
-                Dictionary<string, string> dataDict = new Dictionary<string, string>();
-                dataDict.Add("data", (string)data);
+                Dictionary<string, string> dataDict = new()
+                {
+                    { "data", v }
+                };
                 json = JsonConvert.SerializeObject(dataDict);
             }
             else
