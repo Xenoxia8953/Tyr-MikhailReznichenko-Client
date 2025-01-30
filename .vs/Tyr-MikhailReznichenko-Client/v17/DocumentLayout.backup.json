@@ -1,10 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Tarkov Fika 3.10.5\\Development\\Tyr-MikhailReznichenko-Client\\",
+  "WorkspaceRootPath": "G:\\Tarkov Fika 3.10.5 dev\\Development\\Tyr-MikhailReznichenko-Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9EF5FC34-346B-4863-9938-4E427EE0F568}|Tyr-MikhailReznichenko-Client.csproj|d:\\tarkov fika 3.10.5\\development\\tyr-mikhailreznichenko-client\\mikhailreznichenko.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9EF5FC34-346B-4863-9938-4E427EE0F568}|Tyr-MikhailReznichenko-Client.csproj|g:\\tarkov fika 3.10.5 dev\\development\\tyr-mikhailreznichenko-client\\mikhailreznichenko.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EF5FC34-346B-4863-9938-4E427EE0F568}|Tyr-MikhailReznichenko-Client.csproj|solutionrelative:mikhailreznichenko.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EF5FC34-346B-4863-9938-4E427EE0F568}|Tyr-MikhailReznichenko-Client.csproj|g:\\tarkov fika 3.10.5 dev\\development\\tyr-mikhailreznichenko-client\\items\\ammoworkbench\\ammoworkbench.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EF5FC34-346B-4863-9938-4E427EE0F568}|Tyr-MikhailReznichenko-Client.csproj|solutionrelative:items\\ammoworkbench\\ammoworkbench.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EF5FC34-346B-4863-9938-4E427EE0F568}|Tyr-MikhailReznichenko-Client.csproj|g:\\tarkov fika 3.10.5 dev\\development\\tyr-mikhailreznichenko-client\\helpers\\cursorhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EF5FC34-346B-4863-9938-4E427EE0F568}|Tyr-MikhailReznichenko-Client.csproj|solutionrelative:helpers\\cursorhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CursorHelper.cs",
+              "DocumentMoniker": "G:\\Tarkov Fika 3.10.5 dev\\Development\\Tyr-MikhailReznichenko-Client\\helpers\\CursorHelper.cs",
+              "RelativeDocumentMoniker": "helpers\\CursorHelper.cs",
+              "ToolTip": "G:\\Tarkov Fika 3.10.5 dev\\Development\\Tyr-MikhailReznichenko-Client\\helpers\\CursorHelper.cs",
+              "RelativeToolTip": "helpers\\CursorHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-30T21:55:48.609Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MikhailReznichenko.cs",
-              "DocumentMoniker": "D:\\Tarkov Fika 3.10.5\\Development\\Tyr-MikhailReznichenko-Client\\MikhailReznichenko.cs",
+              "DocumentMoniker": "G:\\Tarkov Fika 3.10.5 dev\\Development\\Tyr-MikhailReznichenko-Client\\MikhailReznichenko.cs",
               "RelativeDocumentMoniker": "MikhailReznichenko.cs",
-              "ToolTip": "D:\\Tarkov Fika 3.10.5\\Development\\Tyr-MikhailReznichenko-Client\\MikhailReznichenko.cs",
+              "ToolTip": "G:\\Tarkov Fika 3.10.5 dev\\Development\\Tyr-MikhailReznichenko-Client\\MikhailReznichenko.cs",
               "RelativeToolTip": "MikhailReznichenko.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAABYAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAwwFUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-23T20:40:50.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AmmoWorkbench.cs",
+              "DocumentMoniker": "G:\\Tarkov Fika 3.10.5 dev\\Development\\Tyr-MikhailReznichenko-Client\\Items\\AmmoWorkbench\\AmmoWorkbench.cs",
+              "RelativeDocumentMoniker": "Items\\AmmoWorkbench\\AmmoWorkbench.cs",
+              "ToolTip": "G:\\Tarkov Fika 3.10.5 dev\\Development\\Tyr-MikhailReznichenko-Client\\Items\\AmmoWorkbench\\AmmoWorkbench.cs",
+              "RelativeToolTip": "Items\\AmmoWorkbench\\AmmoWorkbench.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAvwHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-29T15:49:56.936Z",
               "EditorCaption": ""
             }
           ]
