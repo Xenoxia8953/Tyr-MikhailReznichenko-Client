@@ -274,3 +274,4 @@ G:\Tarkov Fika 3.10.5 dev\Development\Tyr-MikhailReznichenko-Client\obj\Debug\ne
 G:\Tarkov Fika 3.10.5 dev\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-Mikh.8394BCFA.Up2Date
 G:\Tarkov Fika 3.10.5 dev\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-MikhailReznichenko-Client.dll
 G:\Tarkov Fika 3.10.5 dev\Development\Tyr-MikhailReznichenko-Client\obj\Debug\net471\Tyr-MikhailReznichenko-Client.pdb
+G:\Tarkov Fika 3.10.5 dev\Development\Tyr-MikhailReznichenko-Client\bin\Debug\net471\Fika.Core.dll

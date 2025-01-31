@@ -16,6 +16,9 @@
     <Reference Include="LeaveItThere">
       <HintPath>..\..\BepInEx\plugins\LeaveItThere\LeaveItThere.dll</HintPath>
     </Reference>
+    <Reference Include="LeaveItThere-Packets">
+      <HintPath>D:\Tarkov Fika 3.10.5\BepInEx\plugins\LeaveItThere\LeaveItThere-Packets.dll</HintPath>
+    </Reference>
     <Reference Include="PhysicsModule">
       <HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
@@ -87,7 +90,7 @@
       <HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>..\..\EscapeFromTarkov_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>D:\Tarkov Fika 3.10.5\EscapeFromTarkov_Data\Managed\UnityEngine.UIModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
